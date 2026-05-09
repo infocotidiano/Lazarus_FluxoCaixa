@@ -1,13 +1,13 @@
--- MariaDB dump 10.19  Distrib 10.9.2-MariaDB, for Win64 (AMD64)
+-- MySQL dump 10.15  Distrib 10.0.38-MariaDB, for Win32 (AMD64)
 --
 -- Host: localhost    Database: fluxo_caixa
 -- ------------------------------------------------------
--- Server version	10.9.2-MariaDB
+-- Server version	10.0.38-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -67,6 +67,8 @@ CREATE TABLE `lancamentos` (
   `idPagar` int(11) DEFAULT NULL,
   PRIMARY KEY (`conta`,`data_mvto`,`id_lcto`),
   KEY `fk_lcto_plano` (`plano`),
+  KEY `idx_lcto_idReceber` (`idReceber`),
+  KEY `idx_lcto_idPagar` (`idPagar`),
   CONSTRAINT `fk_lcto_conta` FOREIGN KEY (`conta`) REFERENCES `contas` (`id_conta`) ON UPDATE NO ACTION,
   CONSTRAINT `fk_lcto_plano` FOREIGN KEY (`plano`) REFERENCES `planos` (`id_plano`) ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -134,19 +136,9 @@ CREATE TABLE `receber` (
   `entidade` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_receber`),
   KEY `plano` (`plano`),
+  KEY `fk_receber_entidade` (`entidade`),
+  CONSTRAINT `fk_receber_entidade` FOREIGN KEY (`entidade`) REFERENCES `entidades` (`id_entidade`),
   CONSTRAINT `receber_ibfk_1` FOREIGN KEY (`plano`) REFERENCES `planos` (`id_plano`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `teste`
---
-
-DROP TABLE IF EXISTS `teste`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `teste` (
-  `col1` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -174,4 +166,4 @@ CREATE TABLE `usuarios` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-04-20  8:59:23
+-- Dump completed on 2026-05-09 11:17:07

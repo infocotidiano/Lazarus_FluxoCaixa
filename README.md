@@ -10,7 +10,7 @@ Se esse conteúdo foi útil pra você, considere apoiar o canal 💛
 
 Isso ajuda a continuar produzindo mais conteúdos gratuitos e projetos como este.
 
-### ☕ Apoie com um PIX (qualquer valor já ajuda!)
+### ☕ Apoie com um PIX (qualquer valor é bem-vindo !)
 <p align="center">
 <br>
   <img src="https://raw.githubusercontent.com/infocotidiano/infocotidiano/main/images/pixdane.jpeg" width="180"/>

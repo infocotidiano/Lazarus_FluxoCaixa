@@ -2,8 +2,8 @@ unit classe_conta;
 
 {***************************************************************************}
 {                                                                           }
-{   Autor:        Daniel de Morais                                          }
-{   Projeto:      Fluxo de Caixa                                            }
+{   Autor:        Daniel de Morais (InfoCotidiano)                          }
+{   Fontes:       Fluxo Caixa - https://github.com/infocotidiano/FluxoCaixa }
 {                                                                           }
 {   Informações:  Código Fonte da Playlist do YouTube sobre aprendizagem    }
 {                 de como criar um Fluxo de Caixa.                          }

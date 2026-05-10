@@ -156,6 +156,174 @@ CREATE TABLE `usuarios` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Temporary table structure for view `vw_pagar_baixadas`
+--
+
+DROP TABLE IF EXISTS `vw_pagar_baixadas`;
+/*!50001 DROP VIEW IF EXISTS `vw_pagar_baixadas`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `vw_pagar_baixadas` (
+  `dtvencimento` tinyint NOT NULL,
+  `id_pagar` tinyint NOT NULL,
+  `descricao_pagar` tinyint NOT NULL,
+  `valor` tinyint NOT NULL,
+  `situacao` tinyint NOT NULL,
+  `dtrecebimento` tinyint NOT NULL,
+  `valorpago` tinyint NOT NULL,
+  `entidade` tinyint NOT NULL,
+  `nome` tinyint NOT NULL,
+  `codconta` tinyint NOT NULL,
+  `descricao_conta` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `vw_pagar_pendentes`
+--
+
+DROP TABLE IF EXISTS `vw_pagar_pendentes`;
+/*!50001 DROP VIEW IF EXISTS `vw_pagar_pendentes`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `vw_pagar_pendentes` (
+  `dtvencimento` tinyint NOT NULL,
+  `id_pagar` tinyint NOT NULL,
+  `descricao_pagar` tinyint NOT NULL,
+  `valor` tinyint NOT NULL,
+  `situacao` tinyint NOT NULL,
+  `dtrecebimento` tinyint NOT NULL,
+  `valorpago` tinyint NOT NULL,
+  `entidade` tinyint NOT NULL,
+  `nome` tinyint NOT NULL,
+  `codconta` tinyint NOT NULL,
+  `descricao_conta` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `vw_receber_baixadas`
+--
+
+DROP TABLE IF EXISTS `vw_receber_baixadas`;
+/*!50001 DROP VIEW IF EXISTS `vw_receber_baixadas`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `vw_receber_baixadas` (
+  `dtvencimento` tinyint NOT NULL,
+  `id_receber` tinyint NOT NULL,
+  `descricao_receber` tinyint NOT NULL,
+  `valor` tinyint NOT NULL,
+  `situacao` tinyint NOT NULL,
+  `dtrecebimento` tinyint NOT NULL,
+  `valorrecebido` tinyint NOT NULL,
+  `entidade` tinyint NOT NULL,
+  `nome` tinyint NOT NULL,
+  `codconta` tinyint NOT NULL,
+  `descricao_conta` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `vw_receber_pendentes`
+--
+
+DROP TABLE IF EXISTS `vw_receber_pendentes`;
+/*!50001 DROP VIEW IF EXISTS `vw_receber_pendentes`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `vw_receber_pendentes` (
+  `dtvencimento` tinyint NOT NULL,
+  `id_receber` tinyint NOT NULL,
+  `descricao_receber` tinyint NOT NULL,
+  `valor` tinyint NOT NULL,
+  `situacao` tinyint NOT NULL,
+  `dtrecebimento` tinyint NOT NULL,
+  `valorrecebido` tinyint NOT NULL,
+  `entidade` tinyint NOT NULL,
+  `nome` tinyint NOT NULL,
+  `codconta` tinyint NOT NULL,
+  `descricao_conta` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Final view structure for view `vw_pagar_baixadas`
+--
+
+/*!50001 DROP TABLE IF EXISTS `vw_pagar_baixadas`*/;
+/*!50001 DROP VIEW IF EXISTS `vw_pagar_baixadas`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`suporte`@`%` SQL SECURITY DEFINER */
+/*!50001 VIEW `vw_pagar_baixadas` AS select `p`.`dtvencimento` AS `dtvencimento`,`p`.`id_pagar` AS `id_pagar`,`p`.`descricao` AS `descricao_pagar`,`p`.`valor` AS `valor`,`p`.`situacao` AS `situacao`,`p`.`dtrecebimento` AS `dtrecebimento`,`p`.`valorpago` AS `valorpago`,`p`.`entidade` AS `entidade`,`e`.`nome` AS `nome`,`p`.`codconta` AS `codconta`,`c`.`descricao` AS `descricao_conta` from ((`pagar` `p` left join `entidades` `e` on((`e`.`id_entidade` = `p`.`entidade`))) left join `contas` `c` on((`c`.`id_conta` = `p`.`codconta`))) where (`p`.`situacao` = 'B') order by `p`.`dtvencimento` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `vw_pagar_pendentes`
+--
+
+/*!50001 DROP TABLE IF EXISTS `vw_pagar_pendentes`*/;
+/*!50001 DROP VIEW IF EXISTS `vw_pagar_pendentes`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`suporte`@`%` SQL SECURITY DEFINER */
+/*!50001 VIEW `vw_pagar_pendentes` AS select `p`.`dtvencimento` AS `dtvencimento`,`p`.`id_pagar` AS `id_pagar`,`p`.`descricao` AS `descricao_pagar`,`p`.`valor` AS `valor`,`p`.`situacao` AS `situacao`,`p`.`dtrecebimento` AS `dtrecebimento`,`p`.`valorpago` AS `valorpago`,`p`.`entidade` AS `entidade`,`e`.`nome` AS `nome`,`p`.`codconta` AS `codconta`,`c`.`descricao` AS `descricao_conta` from ((`pagar` `p` left join `entidades` `e` on((`e`.`id_entidade` = `p`.`entidade`))) left join `contas` `c` on((`c`.`id_conta` = `p`.`codconta`))) where (`p`.`situacao` = 'P') order by `p`.`dtvencimento` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `vw_receber_baixadas`
+--
+
+/*!50001 DROP TABLE IF EXISTS `vw_receber_baixadas`*/;
+/*!50001 DROP VIEW IF EXISTS `vw_receber_baixadas`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`suporte`@`%` SQL SECURITY DEFINER */
+/*!50001 VIEW `vw_receber_baixadas` AS select `r`.`dtvencimento` AS `dtvencimento`,`r`.`id_receber` AS `id_receber`,`r`.`descricao` AS `descricao_receber`,`r`.`valor` AS `valor`,`r`.`situacao` AS `situacao`,`r`.`dtrecebimento` AS `dtrecebimento`,`r`.`valorrecebido` AS `valorrecebido`,`r`.`entidade` AS `entidade`,`e`.`nome` AS `nome`,`r`.`codconta` AS `codconta`,`c`.`descricao` AS `descricao_conta` from ((`receber` `r` left join `entidades` `e` on((`e`.`id_entidade` = `r`.`entidade`))) left join `contas` `c` on((`c`.`id_conta` = `r`.`codconta`))) where (`r`.`situacao` = 'B') order by `r`.`dtvencimento` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `vw_receber_pendentes`
+--
+
+/*!50001 DROP TABLE IF EXISTS `vw_receber_pendentes`*/;
+/*!50001 DROP VIEW IF EXISTS `vw_receber_pendentes`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`suporte`@`%` SQL SECURITY DEFINER */
+/*!50001 VIEW `vw_receber_pendentes` AS select `r`.`dtvencimento` AS `dtvencimento`,`r`.`id_receber` AS `id_receber`,`r`.`descricao` AS `descricao_receber`,`r`.`valor` AS `valor`,`r`.`situacao` AS `situacao`,`r`.`dtrecebimento` AS `dtrecebimento`,`r`.`valorrecebido` AS `valorrecebido`,`r`.`entidade` AS `entidade`,`e`.`nome` AS `nome`,`r`.`codconta` AS `codconta`,`c`.`descricao` AS `descricao_conta` from ((`receber` `r` left join `entidades` `e` on((`e`.`id_entidade` = `r`.`entidade`))) left join `contas` `c` on((`c`.`id_conta` = `r`.`codconta`))) where (`r`.`situacao` = 'P') order by `r`.`dtvencimento` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -166,4 +334,4 @@ CREATE TABLE `usuarios` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-05-09 11:17:07
+-- Dump completed on 2026-05-10  8:34:57

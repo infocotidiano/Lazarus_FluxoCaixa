@@ -11,7 +11,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="10"/>
         <CursorPos Y="31"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="104"/>
       </Unit>
       <Unit>
         <Filename Value="view\uprincipal.pas"/>
@@ -19,10 +19,9 @@
         <ComponentName Value="frmprincipal"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
         <TopLine Value="169"/>
         <CursorPos X="3" Y="171"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="104"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -34,7 +33,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="24"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="104"/>
       </Unit>
       <Unit>
         <Filename Value="conexao\utabela.pas"/>
@@ -42,12 +41,10 @@
         <ComponentName Value="TabGlobal"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="36"/>
         <CursorPos X="2" Y="60"/>
-        <UsageCount Value="103"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
+        <UsageCount Value="104"/>
       </Unit>
       <Unit>
         <Filename Value="view\ucad_padrao.pas"/>
@@ -58,14 +55,14 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="130"/>
         <CursorPos Y="24"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="104"/>
       </Unit>
       <Unit>
         <Filename Value="classe\classe_plano.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="24"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="104"/>
       </Unit>
       <Unit>
         <Filename Value="classe\classe_conta.pas"/>
@@ -73,7 +70,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="46"/>
         <CursorPos X="82" Y="14"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="104"/>
       </Unit>
       <Unit>
         <Filename Value="classe\classe_lancamento.pas"/>
@@ -81,7 +78,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="3"/>
         <CursorPos X="42" Y="31"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="104"/>
       </Unit>
       <Unit>
         <Filename Value="view\ucad_planoconta.pas"/>
@@ -91,7 +88,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="24"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="104"/>
       </Unit>
       <Unit>
         <Filename Value="view\ucad_conta.pas"/>
@@ -101,7 +98,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="78" Y="5"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="104"/>
       </Unit>
       <Unit>
         <Filename Value="view\ucad_lcto.pas"/>
@@ -111,7 +108,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="24"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="104"/>
       </Unit>
       <Unit>
         <Filename Value="view\umovimento.pas"/>
@@ -122,7 +119,7 @@
         <EditorIndex Value="1"/>
         <TopLine Value="314"/>
         <CursorPos Y="323"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="104"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -135,7 +132,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="84"/>
         <CursorPos Y="24"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="104"/>
       </Unit>
       <Unit>
         <Filename Value="view\uestatistica_despesa.pas"/>
@@ -147,7 +144,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="41"/>
         <CursorPos Y="24"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="104"/>
       </Unit>
       <Unit>
         <Filename Value="relatorios\urel_movimento.pas"/>
@@ -157,7 +154,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="24"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="104"/>
       </Unit>
       <Unit>
         <Filename Value="view\upesquisa_lcto.pas"/>
@@ -167,7 +164,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="52" Y="18"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="104"/>
       </Unit>
       <Unit>
         <Filename Value="view\importa.pas"/>
@@ -177,7 +174,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="24"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="104"/>
       </Unit>
       <Unit>
         <Filename Value="view\ucad_entidade.pas"/>
@@ -187,14 +184,14 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="24"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="104"/>
       </Unit>
       <Unit>
         <Filename Value="classe\classe_registrofinanceiro.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="3" Y="14"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="104"/>
       </Unit>
       <Unit>
         <Filename Value="classe\classe_contareceber.pas"/>
@@ -202,18 +199,18 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="59"/>
         <CursorPos X="38" Y="53"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="104"/>
       </Unit>
       <Unit>
         <Filename Value="classe\classe_entidade.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="104"/>
       </Unit>
       <Unit>
         <Filename Value="classe\uenumerator.pas"/>
         <IsPartOfProject Value="True"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="104"/>
       </Unit>
       <Unit>
         <Filename Value="view\ucad_receber.pas"/>
@@ -221,10 +218,9 @@
         <ComponentName Value="frmcad_receber"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="515"/>
-        <CursorPos X="3" Y="517"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="104"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -233,7 +229,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="23" Y="32"/>
-        <UsageCount Value="97"/>
+        <UsageCount Value="98"/>
       </Unit>
       <Unit>
         <Filename Value="view\ucad_pagar.pas"/>
@@ -243,7 +239,19 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="24"/>
-        <UsageCount Value="96"/>
+        <UsageCount Value="97"/>
+      </Unit>
+      <Unit>
+        <Filename Value="relatorios\urel_contasareceber.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frm_RelContasARceber"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="3"/>
+        <CursorPos Y="2"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="unit1.pas"/>
@@ -316,114 +324,6 @@
     </Debugger>
     <JumpHistory HistoryIndex="29">
       <Position>
-        <Filename Value="view\uprincipal.pas"/>
-        <Caret Line="171" Column="3" TopLine="169"/>
-      </Position>
-      <Position>
-        <Filename Value="view\umovimento.pas"/>
-        <Caret Line="126" Column="3" TopLine="113"/>
-      </Position>
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="268" Column="7" TopLine="261"/>
-      </Position>
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="274" Column="14" TopLine="261"/>
-      </Position>
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="273" Column="3" TopLine="261"/>
-      </Position>
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="274" Column="3" TopLine="262"/>
-      </Position>
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="275" Column="3" TopLine="263"/>
-      </Position>
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="276" Column="3" TopLine="264"/>
-      </Position>
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="277" Column="3" TopLine="265"/>
-      </Position>
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="278" Column="3" TopLine="266"/>
-      </Position>
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="443" Column="18" TopLine="435"/>
-      </Position>
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="283" TopLine="266"/>
-      </Position>
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="281" Column="55" TopLine="269"/>
-      </Position>
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="280" Column="55" TopLine="268"/>
-      </Position>
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="282" Column="60" TopLine="269"/>
-      </Position>
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="445" Column="53" TopLine="437"/>
-      </Position>
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="275" Column="54" TopLine="270"/>
-      </Position>
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="276" Column="54" TopLine="271"/>
-      </Position>
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="280" Column="54" TopLine="275"/>
-      </Position>
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="320" TopLine="302"/>
-      </Position>
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="306" Column="3" TopLine="303"/>
-      </Position>
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="324" Column="14" TopLine="318"/>
-      </Position>
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="299" Column="74" TopLine="291"/>
-      </Position>
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="288" Column="40" TopLine="277"/>
-      </Position>
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="305" Column="107" TopLine="293"/>
-      </Position>
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="300" Column="41" TopLine="293"/>
-      </Position>
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="382" Column="9" TopLine="367"/>
-      </Position>
-      <Position>
         <Filename Value="view\ucad_receber.pas"/>
         <Caret Line="378" Column="26" TopLine="367"/>
       </Position>
@@ -434,6 +334,111 @@
       <Position>
         <Filename Value="view\ucad_receber.pas"/>
         <Caret Line="496" Column="3" TopLine="493"/>
+      </Position>
+      <Position>
+        <Filename Value="view\ucad_receber.pas"/>
+        <Caret Line="517" Column="3" TopLine="515"/>
+      </Position>
+      <Position>
+        <Filename Value="view\ucad_receber.pas"/>
+        <Caret Line="516" Column="3" TopLine="514"/>
+      </Position>
+      <Position>
+        <Filename Value="view\ucad_receber.pas"/>
+        <Caret Line="273" Column="41" TopLine="264"/>
+      </Position>
+      <Position>
+        <Filename Value="view\ucad_receber.pas"/>
+        <Caret Line="155" Column="29" TopLine="146"/>
+      </Position>
+      <Position>
+        <Filename Value="view\ucad_receber.pas"/>
+        <Caret Line="593" Column="43" TopLine="592"/>
+      </Position>
+      <Position>
+        <Filename Value="view\ucad_receber.pas"/>
+        <Caret Line="276" Column="17" TopLine="258"/>
+      </Position>
+      <Position>
+        <Filename Value="view\ucad_receber.pas"/>
+        <Caret Line="596" TopLine="535"/>
+      </Position>
+      <Position>
+        <Filename Value="view\ucad_receber.pas"/>
+        <Caret Line="277" TopLine="274"/>
+      </Position>
+      <Position>
+        <Filename Value="relatorios\urel_contasareceber.pas"/>
+      </Position>
+      <Position>
+        <Filename Value="view\ucad_receber.pas"/>
+        <Caret Line="165" Column="8" TopLine="155"/>
+      </Position>
+      <Position>
+        <Filename Value="relatorios\urel_contasareceber.pas"/>
+      </Position>
+      <Position>
+        <Filename Value="view\ucad_receber.pas"/>
+        <Caret Line="280" Column="48" TopLine="275"/>
+      </Position>
+      <Position>
+        <Filename Value="view\ucad_receber.pas"/>
+        <Caret Line="277" Column="3" TopLine="275"/>
+      </Position>
+      <Position>
+        <Filename Value="view\ucad_receber.pas"/>
+        <Caret Line="155" Column="15" TopLine="146"/>
+      </Position>
+      <Position>
+        <Filename Value="view\ucad_receber.pas"/>
+        <Caret Line="596" Column="39" TopLine="585"/>
+      </Position>
+      <Position>
+        <Filename Value="relatorios\urel_contasareceber.pas"/>
+      </Position>
+      <Position>
+        <Filename Value="relatorios\urel_contasareceber.pas"/>
+        <Caret Line="55" Column="3" TopLine="22"/>
+      </Position>
+      <Position>
+        <Filename Value="relatorios\urel_contasareceber.pas"/>
+        <Caret Line="56" Column="3" TopLine="22"/>
+      </Position>
+      <Position>
+        <Filename Value="relatorios\urel_contasareceber.pas"/>
+        <Caret Line="57" Column="3" TopLine="22"/>
+      </Position>
+      <Position>
+        <Filename Value="relatorios\urel_contasareceber.pas"/>
+        <Caret Line="58" Column="3" TopLine="23"/>
+      </Position>
+      <Position>
+        <Filename Value="relatorios\urel_contasareceber.pas"/>
+        <Caret Line="59" Column="3" TopLine="24"/>
+      </Position>
+      <Position>
+        <Filename Value="view\ucad_receber.pas"/>
+        <Caret Line="598" Column="45" TopLine="593"/>
+      </Position>
+      <Position>
+        <Filename Value="view\ucad_receber.pas"/>
+        <Caret Line="280" Column="94" TopLine="270"/>
+      </Position>
+      <Position>
+        <Filename Value="view\ucad_receber.pas"/>
+        <Caret Line="275" Column="28" TopLine="270"/>
+      </Position>
+      <Position>
+        <Filename Value="view\ucad_receber.pas"/>
+        <Caret Line="464" Column="36" TopLine="451"/>
+      </Position>
+      <Position>
+        <Filename Value="relatorios\urel_contasareceber.pas"/>
+        <Caret Line="31" Column="46" TopLine="26"/>
+      </Position>
+      <Position>
+        <Filename Value="relatorios\urel_contasareceber.pas"/>
+        <Caret Line="22" Column="80"/>
       </Position>
     </JumpHistory>
     <RunParams>

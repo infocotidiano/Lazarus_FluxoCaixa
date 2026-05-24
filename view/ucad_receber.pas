@@ -1,12 +1,11 @@
 unit ucad_receber;
 {***************************************************************************}
-
 {   Autor:        Daniel de Morais (InfoCotidiano)                          }
 {   Fontes:       Fluxo Caixa - https://github.com/infocotidiano/FluxoCaixa }
-
+{                                                                           }
 {   Informações:  Código Fonte da Playlist do YouTube sobre aprendizagem    }
 {                 de como criar um Fluxo de Caixa.                          }
-
+{                                                                           }
 {   Aviso Legal:  Este código é fornecido exclusivamente para fins de       }
 {                 estudo e aprendizagem. Não há qualquer garantia,          }
 {                 explícita ou implícita, de funcionamento, adequação       }
@@ -15,11 +14,10 @@ unit ucad_receber;
 {                 O autor não se responsabiliza por danos diretos,          }
 {                 indiretos, incidentais ou consequenciais decorrentes      }
 {                 do uso deste código em ambientes de produção.             }
-
+{                                                                           }
 {                 Ao utilizar este código, você concorda que qualquer       }
 {                 modificação, adaptação ou uso será de sua inteira         }
 {                 responsabilidade.                                         }
-
 {***************************************************************************}
 
 
@@ -46,7 +44,6 @@ type
     cbxFiltroStatus: TComboBox;
     chkFiltrarEntidade: TCheckBox;
     chkFiltrarPeriodo: TCheckBox;
-    DBGrid2: TDBGrid;
     dsImpressao: TDataSource;
     edtCodEntidade: TEdit;
     edtCodEntidadeImpressao: TEdit;
@@ -153,6 +150,7 @@ type
     FEntidade: TEntidade;
     procedure ExibePainelReceber(lFlag: boolean);
     procedure AlimentaCamposFormulario(AIdLancamento: integer);
+    procedure AplicarFiltro;
   public
 
   end;
@@ -162,6 +160,7 @@ var
 
 
 implementation
+  uses urel_contasareceber;
 
 {$R *.lfm}
 
@@ -272,60 +271,16 @@ begin
 end;
 
 procedure Tfrmcad_receber.btn_imprimirClick(Sender: TObject);
-var
-  LCondicao, LTipoRelatorio: string;
-  LEntidade: integer;
 begin
-  if qrImpressao.Active then
-    qrImpressao.Close;
-  qrImpressao.sql.Clear;
-  // tipo de relatorio
-  if rgTipo.ItemIndex = 0 then
-  begin
-    qrImpressao.SQL.Add('select * from vw_receber_pendentes');
-    LTipoRelatorio := 'dtvencimento';
-  end
-  else
-  begin
-    qrImpressao.SQL.Add('select * from vw_receber_baixadas');
-    LTipoRelatorio := 'dtrecebimento';
-  end;
-
-  // filtrar por periodo
-  if chkFiltrarPeriodo.Checked then
-  begin
-    if dtInicial.Date > dtFinal.Date then
-      raise Exception.Create('Erro Data Final menor que a Data Inicial ');
-
-    qrImpressao.sql.Add('where dtvencimento between :dInicio and :dFim');
-    qrImpressao.ParamByName('dInicio').AsDate := dtInicial.Date;
-    qrImpressao.ParamByName('dFim').AsDate := dtFinal.Date;
-  end;
-
-  // filtrar por entidade
-  if chkFiltrarEntidade.Checked then
-  begin
-    LEntidade := StrToIntDef(edtCodEntidadeImpressao.Text, 0);
-    if LEntidade < 1 then
-      raise Exception.Create('Codigo da entidade deve ser maior que 0');
-
-    if chkFiltrarPeriodo.Checked then
-      LCondicao := 'and '
-    else
-      LCondicao := 'where ';
-    qrImpressao.sql.Add(LCondicao + 'entidade in(:CodigoEntidade)');
-    qrImpressao.ParamByName('CodigoEntidade').AsInteger := LEntidade;
-  end;
-
-  // ordenar
-  qrImpressao.SQL.Add('order by ' + LTipoRelatorio);
-
-
+  AplicarFiltro;
+  frm_RelContasARceber := Tfrm_RelContasARceber.Create(Self);
   try
-    qrImpressao.Open;
-  except
-    raise Exception.Create('Erro ao executar a consulta receber');
+    frm_RelContasARceber.lbPeriodo.Caption := 'Período de '+ DateToStr(dtInicial.Date)+' até '+DateToStr(dtFinal.Date);
+    frm_RelContasARceber.RLReport1.PreviewModal;
+  finally
+    FreeAndNil(frm_RelContasARceber);
   end;
+
 end;
 
 procedure Tfrmcad_receber.DBGrid1DblClick(Sender: TObject);
@@ -505,6 +460,9 @@ begin
   if Assigned(FEntidade) then
     FreeAndNil(FEntidade);
 
+  if qrImpressao.Active then
+    qrImpressao.Close;
+
 
   if qrPESQ.Active then
     qrPESQ.Close;
@@ -586,6 +544,64 @@ begin
     else
       edtDescEntidade.Text := EmptyStr;
 
+  end;
+
+end;
+
+procedure Tfrmcad_receber.AplicarFiltro;
+var
+  LCondicao, LTipoRelatorio: string;
+  LEntidade: integer;
+begin
+  if qrImpressao.Active then
+    qrImpressao.Close;
+  qrImpressao.sql.Clear;
+  // tipo de relatorio
+  if rgTipo.ItemIndex = 0 then
+  begin
+    qrImpressao.SQL.Add('select * from vw_receber_pendentes');
+    LTipoRelatorio := 'dtvencimento';
+  end
+  else
+  begin
+    qrImpressao.SQL.Add('select * from vw_receber_baixadas');
+    LTipoRelatorio := 'dtrecebimento';
+  end;
+
+  // filtrar por periodo
+  if chkFiltrarPeriodo.Checked then
+  begin
+    if dtInicial.Date > dtFinal.Date then
+      raise Exception.Create('Erro Data Final menor que a Data Inicial ');
+
+    qrImpressao.sql.Add('where dtvencimento between :dInicio and :dFim');
+    qrImpressao.ParamByName('dInicio').AsDate := dtInicial.Date;
+    qrImpressao.ParamByName('dFim').AsDate := dtFinal.Date;
+  end;
+
+  // filtrar por entidade
+  if chkFiltrarEntidade.Checked then
+  begin
+    LEntidade := StrToIntDef(edtCodEntidadeImpressao.Text, 0);
+    if LEntidade < 1 then
+      raise Exception.Create('Codigo da entidade deve ser maior que 0');
+
+    if chkFiltrarPeriodo.Checked then
+      LCondicao := 'and '
+    else
+      LCondicao := 'where ';
+    qrImpressao.sql.Add(LCondicao + 'entidade in(:CodigoEntidade)');
+    qrImpressao.ParamByName('CodigoEntidade').AsInteger := LEntidade;
+  end;
+
+  // ordenar
+  qrImpressao.SQL.Add('order by nome, ' + LTipoRelatorio);
+
+
+  try
+    qrImpressao.Open;
+  except
+    raise Exception.Create('Erro ao executar a consulta receber');
   end;
 
 end;

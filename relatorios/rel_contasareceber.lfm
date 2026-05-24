@@ -1,0 +1,8 @@
+object frm_RelContasARceber: Tfrm_RelContasARceber
+  Left = 347
+  Height = 473
+  Top = 250
+  Width = 731
+  Caption = 'Contas a Receber'
+  LCLVersion = '4.4.0.0'
+end

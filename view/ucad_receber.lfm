@@ -1,7 +1,7 @@
 inherited frmcad_receber: Tfrmcad_receber
-  Height = 390
+  Height = 374
   Width = 608
-  ClientHeight = 390
+  ClientHeight = 374
   ClientWidth = 608
   OnClose = FormClose
   OnCreate = FormCreate
@@ -11,12 +11,12 @@ inherited frmcad_receber: Tfrmcad_receber
     Caption = 'Cadastro Receber'
   end
   inherited PageControl1: TPageControl
-    Height = 340
+    Height = 324
     Width = 608
     ActivePage = tsPESQUISA
     TabIndex = 0
     inherited tsPESQUISA: TTabSheet
-      ClientHeight = 312
+      ClientHeight = 296
       ClientWidth = 600
       inherited Panel1: TPanel
         Width = 600
@@ -44,7 +44,7 @@ inherited frmcad_receber: Tfrmcad_receber
       end
       object DBGrid1: TDBGrid[1]
         Left = 0
-        Height = 262
+        Height = 246
         Top = 50
         Width = 600
         Align = alClient
@@ -107,10 +107,10 @@ inherited frmcad_receber: Tfrmcad_receber
       end
     end
     inherited tsCADASTRO: TTabSheet
-      ClientHeight = 312
+      ClientHeight = 296
       ClientWidth = 600
       inherited pnpRODAPE: TPanel
-        Top = 262
+        Top = 246
         Width = 600
         ClientWidth = 600
         inherited btnINCLUI: TSpeedButton
@@ -550,7 +550,7 @@ inherited frmcad_receber: Tfrmcad_receber
     end
     object TabSheet1: TTabSheet[2]
       Caption = 'Relatório'
-      ClientHeight = 312
+      ClientHeight = 296
       ClientWidth = 600
       object btn_imprimir: TSpeedButton
         Left = 488
@@ -583,17 +583,6 @@ inherited frmcad_receber: Tfrmcad_receber
         )
         TabOrder = 0
       end
-      object DBGrid2: TDBGrid
-        Left = 5
-        Height = 144
-        Top = 152
-        Width = 579
-        Color = clWindow
-        Columns = <>
-        DataSource = dsImpressao
-        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgAutoSizeColumns]
-        TabOrder = 1
-      end
       object dtInicial: TRxDateEdit
         Left = 207
         Height = 23
@@ -604,7 +593,7 @@ inherited frmcad_receber: Tfrmcad_receber
         MaxLength = 10
         PasswordChar = #0
         PopupColor = clWindow
-        TabOrder = 2
+        TabOrder = 1
         Text = 't1/  /    '
       end
       object Label18: TLabel
@@ -627,7 +616,7 @@ inherited frmcad_receber: Tfrmcad_receber
         Top = 3
         Width = 113
         Caption = 'Filtrar por período'
-        TabOrder = 3
+        TabOrder = 2
       end
       object dtFinal: TRxDateEdit
         Left = 320
@@ -639,7 +628,7 @@ inherited frmcad_receber: Tfrmcad_receber
         MaxLength = 10
         PasswordChar = #0
         PopupColor = clWindow
-        TabOrder = 4
+        TabOrder = 3
         Text = 't1/  /    '
       end
       object chkFiltrarEntidade: TCheckBox
@@ -648,7 +637,7 @@ inherited frmcad_receber: Tfrmcad_receber
         Top = 68
         Width = 118
         Caption = 'Filtrar por Entidade'
-        TabOrder = 5
+        TabOrder = 4
       end
       object Label20: TLabel
         Left = 208
@@ -665,7 +654,7 @@ inherited frmcad_receber: Tfrmcad_receber
         Top = 105
         Width = 57
         NumbersOnly = True
-        TabOrder = 6
+        TabOrder = 5
         OnExit = edtCodEntidadeImpressaoExit
         OnKeyDown = edtCodEntidadeImpressaoKeyDown
       end
@@ -685,7 +674,7 @@ inherited frmcad_receber: Tfrmcad_receber
         Width = 168
         Enabled = False
         ReadOnly = True
-        TabOrder = 7
+        TabOrder = 6
       end
     end
   end

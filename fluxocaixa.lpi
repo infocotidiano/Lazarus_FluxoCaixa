@@ -290,6 +290,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
+      <Unit>
+        <Filename Value="relatorios/urel_contasareceber.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frm_RelContasARceber"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

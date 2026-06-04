@@ -275,6 +275,9 @@ begin
   AplicarFiltro;
   frm_RelContasARceber := Tfrm_RelContasARceber.Create(Self);
   try
+    if rgTipo.ItemIndex = 1 then
+       frm_RelContasARceber.lbTitulo.Caption:='Relatório de Contas Recebidas';
+    if chkFiltrarPeriodo.Checked then
     frm_RelContasARceber.lbPeriodo.Caption := 'Período de '+ DateToStr(dtInicial.Date)+' até '+DateToStr(dtFinal.Date);
     frm_RelContasARceber.RLReport1.PreviewModal;
   finally

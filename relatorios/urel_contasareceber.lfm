@@ -17,6 +17,7 @@ object frm_RelContasARceber: Tfrm_RelContasARceber
     Font.Color = clBlack
     Font.Height = -13
     Font.Name = 'Arial'
+    BeforePrint = RLReport1BeforePrint
     object Cabecalho: TRLBand
       Left = 38
       Height = 88
@@ -42,17 +43,18 @@ object frm_RelContasARceber: Tfrm_RelContasARceber
         Left = 15
         Height = 16
         Top = 46
-        Width = 48
-        Caption = 'Periodo'
+        Width = 137
+        Caption = 'Periodo não informado.'
       end
     end
     object AgrupaEntidade: TRLGroup
       Left = 38
-      Height = 104
+      Height = 152
       Top = 126
       Width = 718
       DataFields = 'nome'
-      object BandCabEntidade: TRLBand
+      BeforePrint = AgrupaEntidadeBeforePrint
+      object bdCabEntidade: TRLBand
         Left = 0
         Height = 42
         Top = 0
@@ -113,15 +115,16 @@ object frm_RelContasARceber: Tfrm_RelContasARceber
           Transparent = False
         end
       end
-      object BandDetalhes: TRLBand
+      object bdDetalheReceber: TRLBand
         Left = 0
-        Height = 18
+        Height = 22
         Top = 42
         Width = 718
+        BeforePrint = bdDetalheReceberBeforePrint
         object RLDBText3: TRLDBText
           Left = 12
           Height = 16
-          Top = 0
+          Top = 3
           Width = 80
           DataField = 'dtvencimento'
           DataSource = frmcad_receber.dsImpressao
@@ -129,28 +132,35 @@ object frm_RelContasARceber: Tfrm_RelContasARceber
         object RLDBText4: TRLDBText
           Left = 190
           Height = 16
-          Top = 0
+          Top = 3
           Width = 110
           DataField = 'descricao_receber'
           DataSource = frmcad_receber.dsImpressao
         end
         object RLDBText5: TRLDBText
-          Left = 682
+          Left = 672
           Height = 16
-          Top = 0
+          Top = 3
           Width = 30
           Alignment = taRightJustify
           DataField = 'valor'
           DataSource = frmcad_receber.dsImpressao
           DisplayMask = '##,###,##0.00'
         end
+        object RLDraw5: TRLDraw
+          Left = 9
+          Height = 0
+          Top = 1
+          Width = 700
+        end
       end
-      object BandRodapeEntidade: TRLBand
+      object bdRodapeReceber: TRLBand
         Left = 0
         Height = 24
-        Top = 60
+        Top = 82
         Width = 718
         BandType = btColumnFooter
+        BeforePrint = bdRodapeReceberBeforePrint
         object RLDraw2: TRLDraw
           Left = 476
           Height = 23
@@ -163,25 +173,6 @@ object frm_RelContasARceber: Tfrm_RelContasARceber
           Color = clSkyBlue
           ParentColor = False
           Transparent = False
-        end
-        object RLDBResult1: TRLDBResult
-          Left = 627
-          Height = 16
-          Top = 3
-          Width = 77
-          Alignment = taRightJustify
-          DataField = 'valor'
-          DataSource = frmcad_receber.dsImpressao
-          DisplayMask = '##,###,##0.00'
-          Font.CharSet = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Pitch = fpVariable
-          Font.Quality = fqDraft
-          Font.Style = [fsBold]
-          Info = riSum
-          ParentFont = False
         end
         object RLLabel5: TRLLabel
           Left = 504
@@ -198,14 +189,155 @@ object frm_RelContasARceber: Tfrm_RelContasARceber
           Font.Style = [fsBold]
           ParentFont = False
         end
+        object rlReceberAgrupado: TRLLabel
+          Left = 571
+          Height = 16
+          Top = 3
+          Width = 131
+          Alignment = taRightJustify
+          AutoSize = False
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+      end
+      object bdDetalheRecebida: TRLBand
+        Left = 0
+        Height = 18
+        Top = 64
+        Width = 718
+        Font.Color = clBlack
+        Font.Height = -12
+        Font.Name = 'Arial'
+        ParentFont = False
+        BeforePrint = bdDetalheRecebidaBeforePrint
+        object RLDBText6: TRLDBText
+          Left = 120
+          Height = 15
+          Top = 2
+          Width = 82
+          DataField = 'dtrecebimento'
+          DataSource = frmcad_receber.dsImpressao
+        end
+        object RLDBText8: TRLDBText
+          Left = 304
+          Height = 15
+          Top = 2
+          Width = 80
+          Alignment = taRightJustify
+          AutoSize = False
+          DataField = 'valorrecebido'
+          DataSource = frmcad_receber.dsImpressao
+          DisplayMask = '##,###,##0.00'
+        end
+        object RLLabel12: TRLLabel
+          Left = 16
+          Height = 15
+          Top = 2
+          Width = 95
+          Caption = 'Dt. Recebimento'
+        end
+        object RLLabel13: TRLLabel
+          Left = 208
+          Height = 15
+          Top = 2
+          Width = 90
+          AutoSize = False
+          Caption = 'Valor Recebido:'
+        end
+        object RLLabel14: TRLLabel
+          Left = 392
+          Height = 15
+          Top = 2
+          Width = 40
+          AutoSize = False
+          Caption = 'Conta'
+        end
+        object RLDBText9: TRLDBText
+          Left = 440
+          Height = 15
+          Top = 2
+          Width = 48
+          Alignment = taRightJustify
+          AutoSize = False
+          DataField = 'codconta'
+          DataSource = frmcad_receber.dsImpressao
+        end
+        object RLDBText10: TRLDBText
+          Left = 488
+          Height = 15
+          Top = 2
+          Width = 216
+          AutoSize = False
+          DataField = 'descricao_conta'
+          DataSource = frmcad_receber.dsImpressao
+        end
+      end
+      object bdRodapeRecebida: TRLBand
+        Left = 0
+        Height = 24
+        Top = 106
+        Width = 718
+        BandType = btColumnFooter
+        BeforePrint = bdRodapeRecebidaBeforePrint
+        object RLDraw3: TRLDraw
+          Left = 380
+          Height = 23
+          Top = 0
+          Width = 332
+          Borders.Width = 0
+          Borders.Color = clWhite
+          Borders.Style = bsClear
+          Brush.Color = 15987699
+          Color = clSkyBlue
+          ParentColor = False
+          Transparent = False
+        end
+        object RLLabel9: TRLLabel
+          Left = 440
+          Height = 16
+          Top = 5
+          Width = 120
+          Caption = 'Total Recebido R$'
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object rlRecebidoAgrupado: TRLLabel
+          Left = 571
+          Height = 16
+          Top = 3
+          Width = 131
+          Alignment = taRightJustify
+          AutoSize = False
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
       end
     end
-    object RLBand3: TRLBand
+    object bdSumarioReceber: TRLBand
       Left = 38
       Height = 24
-      Top = 230
+      Top = 278
       Width = 718
       BandType = btSummary
+      BeforePrint = bdSumarioReceberBeforePrint
       object RLLabel6: TRLLabel
         Left = 467
         Height = 16
@@ -221,25 +353,6 @@ object frm_RelContasARceber: Tfrm_RelContasARceber
         Font.Style = [fsBold]
         ParentFont = False
       end
-      object RLDBResult2: TRLDBResult
-        Left = 627
-        Height = 16
-        Top = 5
-        Width = 77
-        Alignment = taRightJustify
-        DataField = 'valor'
-        DataSource = frmcad_receber.dsImpressao
-        DisplayMask = '##,###,##0.00'
-        Font.CharSet = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -13
-        Font.Name = 'Arial'
-        Font.Pitch = fpVariable
-        Font.Quality = fqDraft
-        Font.Style = [fsBold]
-        Info = riSum
-        ParentFont = False
-      end
       object RLLabel7: TRLLabel
         Left = 20
         Height = 16
@@ -253,11 +366,27 @@ object frm_RelContasARceber: Tfrm_RelContasARceber
         Top = 3
         Width = 697
       end
+      object rlReceberTotal: TRLLabel
+        Left = 571
+        Height = 16
+        Top = 5
+        Width = 131
+        Alignment = taRightJustify
+        AutoSize = False
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
     end
     object Rodape: TRLBand
       Left = 38
       Height = 24
-      Top = 254
+      Top = 326
       Width = 718
       BandType = btFooter
       object RLLabel8: TRLLabel
@@ -266,6 +395,58 @@ object frm_RelContasARceber: Tfrm_RelContasARceber
         Top = 4
         Width = 214
         Caption = 'Fluxo de Caixa - by (c) InfoCotidiano'
+      end
+    end
+    object bdSumarioRecebido: TRLBand
+      Left = 38
+      Height = 24
+      Top = 302
+      Width = 718
+      BandType = btSummary
+      BeforePrint = bdSumarioRecebidoBeforePrint
+      object RLLabel11: TRLLabel
+        Left = 20
+        Height = 16
+        Top = 5
+        Width = 128
+        Caption = '** Final de Impressao'
+      end
+      object RLDraw4: TRLDraw
+        Left = 7
+        Height = 1
+        Top = 3
+        Width = 697
+      end
+      object RLLabel10: TRLLabel
+        Left = 440
+        Height = 16
+        Top = 5
+        Width = 120
+        Caption = 'Total Recebido R$'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object rlRecebidoTotal: TRLLabel
+        Left = 571
+        Height = 16
+        Top = 5
+        Width = 131
+        Alignment = taRightJustify
+        AutoSize = False
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        Font.Style = [fsBold]
+        ParentFont = False
       end
     end
   end

@@ -577,7 +577,7 @@ begin
     if dtInicial.Date > dtFinal.Date then
       raise Exception.Create('Erro Data Final menor que a Data Inicial ');
 
-    qrImpressao.sql.Add('where dtvencimento between :dInicio and :dFim');
+    qrImpressao.sql.Add('where '+LTipoRelatorio+' between :dInicio and :dFim');
     qrImpressao.ParamByName('dInicio').AsDate := dtInicial.Date;
     qrImpressao.ParamByName('dFim').AsDate := dtFinal.Date;
   end;

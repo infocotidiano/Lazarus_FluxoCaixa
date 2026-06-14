@@ -218,9 +218,10 @@
         <ComponentName Value="frmcad_receber"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="147"/>
-        <CursorPos X="77" Y="279"/>
+        <TopLine Value="578"/>
+        <CursorPos X="48" Y="580"/>
         <UsageCount Value="105"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -248,13 +249,10 @@
         <ComponentName Value="frm_RelContasARceber"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="112"/>
         <CursorPos Y="139"/>
         <UsageCount Value="22"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="unit1.pas"/>
@@ -325,38 +323,7 @@
     <Debugger>
       <Backend Value="{452614DB-032E-4734-A2C6-A5C50AA8784A}"/>
     </Debugger>
-    <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="155" Column="15" TopLine="146"/>
-      </Position>
-      <Position>
-        <Filename Value="view\ucad_receber.pas"/>
-        <Caret Line="596" Column="39" TopLine="585"/>
-      </Position>
-      <Position>
-        <Filename Value="relatorios\urel_contasareceber.pas"/>
-      </Position>
-      <Position>
-        <Filename Value="relatorios\urel_contasareceber.pas"/>
-        <Caret Line="55" Column="3" TopLine="22"/>
-      </Position>
-      <Position>
-        <Filename Value="relatorios\urel_contasareceber.pas"/>
-        <Caret Line="56" Column="3" TopLine="22"/>
-      </Position>
-      <Position>
-        <Filename Value="relatorios\urel_contasareceber.pas"/>
-        <Caret Line="57" Column="3" TopLine="22"/>
-      </Position>
-      <Position>
-        <Filename Value="relatorios\urel_contasareceber.pas"/>
-        <Caret Line="58" Column="3" TopLine="23"/>
-      </Position>
-      <Position>
-        <Filename Value="relatorios\urel_contasareceber.pas"/>
-        <Caret Line="59" Column="3" TopLine="24"/>
-      </Position>
+    <JumpHistory HistoryIndex="7">
       <Position>
         <Filename Value="view\ucad_receber.pas"/>
         <Caret Line="598" Column="45" TopLine="593"/>
@@ -374,75 +341,19 @@
         <Caret Line="464" Column="36" TopLine="451"/>
       </Position>
       <Position>
-        <Filename Value="relatorios\urel_contasareceber.pas"/>
-        <Caret Line="31" Column="46" TopLine="26"/>
-      </Position>
-      <Position>
-        <Filename Value="relatorios\urel_contasareceber.pas"/>
-        <Caret Line="22" Column="80"/>
-      </Position>
-      <Position>
-        <Filename Value="relatorios\urel_contasareceber.pas"/>
-        <Caret Line="2"/>
-      </Position>
-      <Position>
-        <Filename Value="relatorios\urel_contasareceber.pas"/>
-        <Caret Line="86" Column="42" TopLine="78"/>
-      </Position>
-      <Position>
-        <Filename Value="relatorios\urel_contasareceber.pas"/>
-        <Caret Line="117" Column="17" TopLine="95"/>
-      </Position>
-      <Position>
-        <Filename Value="relatorios\urel_contasareceber.pas"/>
-        <Caret Line="113" Column="20" TopLine="97"/>
-      </Position>
-      <Position>
-        <Filename Value="relatorios\urel_contasareceber.pas"/>
-        <Caret Line="122" Column="72" TopLine="110"/>
-      </Position>
-      <Position>
-        <Filename Value="relatorios\urel_contasareceber.pas"/>
-        <Caret Line="132" Column="3" TopLine="117"/>
-      </Position>
-      <Position>
-        <Filename Value="relatorios\urel_contasareceber.pas"/>
-        <Caret Line="144" Column="3" TopLine="133"/>
-      </Position>
-      <Position>
-        <Filename Value="relatorios\urel_contasareceber.pas"/>
-        <Caret Line="152" Column="76" TopLine="135"/>
-      </Position>
-      <Position>
-        <Filename Value="relatorios\urel_contasareceber.pas"/>
-        <Caret Line="161" TopLine="150"/>
-      </Position>
-      <Position>
-        <Filename Value="relatorios\urel_contasareceber.pas"/>
-        <Caret Line="168" Column="68" TopLine="150"/>
-      </Position>
-      <Position>
-        <Filename Value="relatorios\urel_contasareceber.pas"/>
-        <Caret Line="141" TopLine="132"/>
-      </Position>
-      <Position>
-        <Filename Value="relatorios\urel_contasareceber.pas"/>
-        <Caret Line="160" TopLine="155"/>
-      </Position>
-      <Position>
         <Filename Value="view\ucad_receber.pas"/>
       </Position>
       <Position>
-        <Filename Value="relatorios\urel_contasareceber.pas"/>
-        <Caret Line="177" TopLine="155"/>
+        <Filename Value="view\ucad_receber.pas"/>
+        <Caret Line="279" Column="78" TopLine="147"/>
       </Position>
       <Position>
-        <Filename Value="relatorios\urel_contasareceber.pas"/>
-        <Caret Line="140" Column="43" TopLine="129"/>
+        <Filename Value="view\ucad_receber.pas"/>
+        <Caret Line="275" Column="3" TopLine="270"/>
       </Position>
       <Position>
-        <Filename Value="relatorios\urel_contasareceber.pas"/>
-        <Caret Line="159" Column="43" TopLine="148"/>
+        <Filename Value="view\ucad_receber.pas"/>
+        <Caret Line="153" Column="15" TopLine="142"/>
       </Position>
     </JumpHistory>
     <RunParams>

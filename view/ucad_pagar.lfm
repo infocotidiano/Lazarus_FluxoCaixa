@@ -14,8 +14,8 @@ inherited frmcad_pagar: Tfrmcad_pagar
   inherited PageControl1: TPageControl
     Height = 341
     Width = 605
-    ActivePage = tsPESQUISA
-    TabIndex = 0
+    ActivePage = tsRelatorio
+    TabIndex = 2
     inherited tsPESQUISA: TTabSheet
       ClientHeight = 313
       ClientWidth = 597
@@ -549,6 +549,146 @@ inherited frmcad_pagar: Tfrmcad_pagar
         ParentColor = False
       end
     end
+    object tsRelatorio: TTabSheet[2]
+      Caption = 'Relatório'
+      ClientHeight = 313
+      ClientWidth = 597
+      object btn_imprimir: TSpeedButton
+        Left = 488
+        Height = 24
+        Top = 8
+        Width = 106
+        Caption = 'Imprimir'
+        OnClick = btn_imprimirClick
+      end
+      object rgTipo: TRadioGroup
+        Left = 5
+        Height = 85
+        Top = 11
+        Width = 185
+        AutoFill = True
+        Caption = 'Tipo de Relatório'
+        ChildSizing.LeftRightSpacing = 6
+        ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+        ChildSizing.EnlargeVertical = crsHomogenousChildResize
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 1
+        ClientHeight = 65
+        ClientWidth = 181
+        ItemIndex = 0
+        Items.Strings = (
+          'Contas a Pagar'
+          'Contas Pagas'
+        )
+        TabOrder = 0
+      end
+      object dtInicial: TRxDateEdit
+        Left = 207
+        Height = 23
+        Top = 39
+        Width = 103
+        ButtonWidth = 23
+        DialogTitle = 'Select a Date'
+        MaxLength = 10
+        PasswordChar = #0
+        PopupColor = clWindow
+        TabOrder = 1
+        Text = 't1/  /    '
+      end
+      object Label18: TLabel
+        Left = 207
+        Height = 15
+        Top = 25
+        Width = 58
+        Caption = 'Data Inicial'
+      end
+      object Label19: TLabel
+        Left = 320
+        Height = 15
+        Top = 24
+        Width = 52
+        Caption = 'Data Final'
+      end
+      object chkFiltrarPeriodo: TCheckBox
+        Left = 208
+        Height = 19
+        Top = 3
+        Width = 113
+        Caption = 'Filtrar por período'
+        TabOrder = 2
+      end
+      object dtFinal: TRxDateEdit
+        Left = 320
+        Height = 23
+        Top = 38
+        Width = 103
+        ButtonWidth = 23
+        DialogTitle = 'Select a Date'
+        MaxLength = 10
+        PasswordChar = #0
+        PopupColor = clWindow
+        TabOrder = 3
+        Text = 't1/  /    '
+      end
+      object chkFiltrarEntidade: TCheckBox
+        Left = 208
+        Height = 19
+        Top = 68
+        Width = 118
+        Caption = 'Filtrar por Entidade'
+        TabOrder = 4
+      end
+      object Label20: TLabel
+        Left = 208
+        Height = 15
+        Top = 88
+        Width = 46
+        Caption = 'Entidade'
+        ParentColor = False
+      end
+      object edtCodEntidadeImpressao: TEdit
+        Tag = 99
+        Left = 207
+        Height = 23
+        Top = 105
+        Width = 57
+        NumbersOnly = True
+        TabOrder = 5
+        OnExit = edtCodEntidadeImpressaoExit
+        OnKeyDown = edtCodEntidadeImpressaoKeyDown
+      end
+      object Label21: TLabel
+        Left = 273
+        Height = 15
+        Top = 88
+        Width = 33
+        Caption = 'Nome'
+        ParentColor = False
+      end
+      object edtDescEntidadeImpressao: TEdit
+        Tag = 99
+        Left = 271
+        Height = 23
+        Top = 105
+        Width = 168
+        Enabled = False
+        ReadOnly = True
+        TabOrder = 6
+      end
+      object DBGrid2: TDBGrid
+        Left = 9
+        Height = 151
+        Top = 153
+        Width = 593
+        Color = clWindow
+        Columns = <>
+        DataSource = dsImpressao
+        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgAutoSizeColumns]
+        TabOrder = 7
+      end
+    end
   end
   object qrPESQ: TZQuery[2]
     Connection = TabGlobal.conexao
@@ -671,5 +811,132 @@ inherited frmcad_pagar: Tfrmcad_pagar
     EnterAsTab = True
     Left = 532
     Top = 220
+  end
+  object qrImpressao: TZQuery[5]
+    Connection = TabGlobal.conexao
+    SQL.Strings = (
+      'select * from vw_pagar_pendentes'
+    )
+    Params = <>
+    Left = 256
+    Top = 312
+    object qrImpressaodtvencimento: TZDateField
+      FieldKind = fkData
+      FieldName = 'dtvencimento'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrImpressaoid_pagar: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'id_pagar'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qrImpressaodescricao_pagar: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'descricao_pagar'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object qrImpressaovalor: TZBCDField
+      FieldKind = fkData
+      FieldName = 'valor'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 10
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrImpressaosituacao: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'situacao'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1
+    end
+    object qrImpressaodtrecebimento: TZDateField
+      FieldKind = fkData
+      FieldName = 'dtrecebimento'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrImpressaovalorpago: TZBCDField
+      FieldKind = fkData
+      FieldName = 'valorpago'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Precision = 10
+      Currency = False
+      MaxValue = 0
+      MinValue = 0
+      Size = 2
+    end
+    object qrImpressaoentidade: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'entidade'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrImpressaonome: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'nome'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 80
+    end
+    object qrImpressaocodconta: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'codconta'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object qrImpressaodescricao_conta: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'descricao_conta'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 80
+    end
+  end
+  object dsImpressao: TDataSource[6]
+    DataSet = qrImpressao
+    Left = 344
+    Top = 296
   end
 end

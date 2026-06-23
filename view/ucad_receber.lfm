@@ -13,8 +13,8 @@ inherited frmcad_receber: Tfrmcad_receber
   inherited PageControl1: TPageControl
     Height = 324
     Width = 608
-    ActivePage = tsPESQUISA
-    TabIndex = 0
+    ActivePage = tsRelatorio
+    TabIndex = 2
     inherited tsPESQUISA: TTabSheet
       ClientHeight = 296
       ClientWidth = 600
@@ -548,7 +548,7 @@ inherited frmcad_receber: Tfrmcad_receber
         TabOrder = 10
       end
     end
-    object TabSheet1: TTabSheet[2]
+    object tsRelatorio: TTabSheet[2]
       Caption = 'Relatório'
       ClientHeight = 296
       ClientWidth = 600
@@ -782,8 +782,8 @@ inherited frmcad_receber: Tfrmcad_receber
       'select * from vw_receber_pendentes'
     )
     Params = <>
-    Left = 383
-    Top = 331
+    Left = 360
+    Top = 288
     object qrImpressaodtvencimento: TZDateField
       FieldKind = fkData
       FieldName = 'dtvencimento'
@@ -900,7 +900,7 @@ inherited frmcad_receber: Tfrmcad_receber
   end
   object dsImpressao: TDataSource[6]
     DataSet = qrImpressao
-    Left = 441
-    Top = 332
+    Left = 448
+    Top = 272
   end
 end

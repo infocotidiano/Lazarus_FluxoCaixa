@@ -116,7 +116,7 @@ type
     rgTipo: TRadioGroup;
     dtInicial: TRxDateEdit;
     dtFinal: TRxDateEdit;
-    TabSheet1: TTabSheet;
+    tsRelatorio: TTabSheet;
     qrImpressao: TZQuery;
     procedure btnALTERAClick(Sender: TObject);
     procedure btnAPAGAClick(Sender: TObject);

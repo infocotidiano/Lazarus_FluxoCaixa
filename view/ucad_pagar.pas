@@ -29,9 +29,10 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, DBGrids, StdCtrls,
-  DateTimePicker, ucad_padrao, ACBrEnterTab, rxcurredit, DB, ZDataset,
-  ZAbstractRODataset, classe_conta, classe_plano, classe_contapagar,
-  classe_lancamento, upesquisa, LCLType, ExtCtrls, classe_entidade;
+  DateTimePicker, ucad_padrao, ACBrEnterTab, rxcurredit, rxtooledit, DB,
+  ZDataset, ZAbstractRODataset, classe_conta, classe_plano, classe_contapagar,
+  classe_lancamento, upesquisa, LCLType, ExtCtrls, ComCtrls, Buttons,
+  classe_entidade;
 
 type
 
@@ -42,11 +43,19 @@ type
     btnPAGAR: TButton;
     btnRecCancel: TButton;
     btnRecOK: TButton;
+    btn_imprimir: TSpeedButton;
     cbxFiltroStatus: TComboBox;
+    chkFiltrarEntidade: TCheckBox;
+    chkFiltrarPeriodo: TCheckBox;
     DatPAG: TDateTimePicker;
     DBGrid1: TDBGrid;
+    DBGrid2: TDBGrid;
+    dsImpressao: TDataSource;
     dsPESQ: TDataSource;
+    dtFinal: TRxDateEdit;
+    dtInicial: TRxDateEdit;
     edtCodEntidade: TEdit;
+    edtCodEntidadeImpressao: TEdit;
     edtCodPlano: TEdit;
     edtContaDestinoREC: TEdit;
     edtDataLcto: TDateTimePicker;
@@ -55,6 +64,7 @@ type
     edtDesc: TEdit;
     edtDescDestinoREC: TEdit;
     edtDescEntidade: TEdit;
+    edtDescEntidadeImpressao: TEdit;
     edtDescPlano: TEdit;
     edtIdLcto: TEdit;
     edtSituacao: TEdit;
@@ -71,7 +81,11 @@ type
     Label15: TLabel;
     Label16: TLabel;
     Label17: TLabel;
+    Label18: TLabel;
+    Label19: TLabel;
     Label2: TLabel;
+    Label20: TLabel;
+    Label21: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
@@ -82,6 +96,18 @@ type
     nValPAG: TCurrencyEdit;
     Panel3: TPanel;
     pnpPAGAR: TPanel;
+    qrImpressao: TZQuery;
+    qrImpressaocodconta: TZIntegerField;
+    qrImpressaodescricao_conta: TZRawStringField;
+    qrImpressaodescricao_pagar: TZRawStringField;
+    qrImpressaodtrecebimento: TZDateField;
+    qrImpressaodtvencimento: TZDateField;
+    qrImpressaoentidade: TZIntegerField;
+    qrImpressaoid_pagar: TZIntegerField;
+    qrImpressaonome: TZRawStringField;
+    qrImpressaosituacao: TZRawStringField;
+    qrImpressaovalor: TZBCDField;
+    qrImpressaovalorpago: TZBCDField;
     qrPESQ: TZQuery;
     qrPESQcodconta: TZIntegerField;
     qrPESQdescricao: TZRawStringField;
@@ -93,6 +119,8 @@ type
     qrPESQsituacao: TZRawStringField;
     qrPESQvalor: TZBCDField;
     qrPESQvalorpago: TZBCDField;
+    rgTipo: TRadioGroup;
+    tsRelatorio: TTabSheet;
     procedure btnALTERAClick(Sender: TObject);
     procedure btnAPAGAClick(Sender: TObject);
     procedure btnINCLUIClick(Sender: TObject);
@@ -101,8 +129,12 @@ type
     procedure btnRecCancelClick(Sender: TObject);
     procedure btnRecOKClick(Sender: TObject);
     procedure btnSALVAClick(Sender: TObject);
+    procedure btn_imprimirClick(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
     procedure edtCodEntidadeExit(Sender: TObject);
+    procedure edtCodEntidadeImpressaoExit(Sender: TObject);
+    procedure edtCodEntidadeImpressaoKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
     procedure edtCodEntidadeKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure edtCodPlanoExit(Sender: TObject);
@@ -121,6 +153,7 @@ type
     FEntidade : TEntidade;
     procedure ExibePainelPagar(lFlag: boolean);
     procedure AlimentaCamposFormulario(AIdLancamento:Integer);
+    procedure AplicarFiltro;
   public
 
   end;
@@ -274,6 +307,11 @@ begin
 
 end;
 
+procedure Tfrmcad_pagar.btn_imprimirClick(Sender: TObject);
+begin
+  AplicarFiltro;
+end;
+
 procedure Tfrmcad_pagar.DBGrid1DblClick(Sender: TObject);
 begin
 
@@ -297,6 +335,44 @@ begin
   begin
     edtDescEntidade.Text := '';
     ShowMessage('Entidade invalida !');
+  end;
+
+end;
+
+procedure Tfrmcad_pagar.edtCodEntidadeImpressaoExit(Sender: TObject);
+begin
+  if StrToIntDef(edtCodEntidadeImpressao.Text, 0) > 0 then
+  begin
+    if FEntidade.localiza(StrToIntDef(edtCodEntidadeImpressao.Text, 0)) then
+      edtDescEntidadeImpressao.Text := FEntidade.Nome
+    else
+    begin
+      edtDescEntidadeImpressao.Text := '';
+      ShowMessage('Entidade não Localizada.');
+    end;
+  end
+  else
+  begin
+    edtDescEntidadeImpressao.Text := '';
+    ShowMessage('Entidade invalida !');
+  end;
+
+end;
+
+procedure Tfrmcad_pagar.edtCodEntidadeImpressaoKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  if key = VK_F4 then
+  begin
+    frmPesquisa := TfrmPesquisa.Create(self, ['id_entidade', 'nome', 'telefone'],
+      'entidades', 'id_entidade');
+    try
+      frmPesquisa.ShowModal;
+      edtCodEntidadeImpressao.Text := frmPesquisa.edtResultado.Text;
+    finally
+      if Assigned(frmPesquisa) then
+        FreeAndNil(frmPesquisa);
+    end;
   end;
 
 end;
@@ -422,6 +498,9 @@ begin
   if qrPESQ.Active then
     qrPESQ.Close;
 
+  if qrImpressao.Active then
+    qrImpressao.Close;
+
 end;
 
 procedure Tfrmcad_pagar.FormCreate(Sender: TObject);
@@ -430,6 +509,8 @@ begin
   FPlano := Tplano.Create;
   FConta := Tconta.Create;
   FEntidade := TEntidade.Create;
+  dtInicial.Date:=now;
+  dtFinal.Date:=now;
   ExibePainelPagar(False);
 end;
 
@@ -494,6 +575,62 @@ begin
       edtDescEntidade.Text := EmptyStr;
 
 
+  end;
+
+
+end;
+
+procedure Tfrmcad_pagar.AplicarFiltro;
+var
+  LCondicao, LTipoRelatorio : String;
+  LEntidade : Integer;
+begin
+  if qrImpressao.Active then
+     qrImpressao.Close;
+
+  qrImpressao.SQL.Clear;
+  // filtrar tipo relatorio
+  if rgTipo.ItemIndex = 0 then // A pagar
+  begin
+    qrImpressao.SQL.Add('select * from vw_pagar_pendentes');
+    LTipoRelatorio:='dtvencimento';
+  end
+  else
+  begin
+    qrImpressao.SQL.Add('select * from vw_pagar_baixadas');
+    LTipoRelatorio:='dtrecebimento';
+  end;
+  // filtrar data
+  if chkFiltrarPeriodo.Checked then
+  begin
+    if dtInicial.Date > dtFinal.Date then
+      raise Exception.Create('Erro: Data final menor que a data inicial');
+
+    qrImpressao.SQL.Add('where '+LTipoRelatorio+' between :dInicio and :dFinal');
+    qrImpressao.ParamByName('dInicio').AsDate:=dtInicial.Date ;
+    qrImpressao.ParamByName('dFinal').AsDate:=dtFinal.Date ;
+  end;
+  // Filtrar Entidade
+  if chkFiltrarEntidade.Checked then
+  begin
+    LEntidade:= StrToIntDef(edtCodEntidadeImpressao.Text,0);
+    if LEntidade < 1 then
+       Raise Exception.Create('Código Entidade inválida');
+
+    if chkFiltrarPeriodo.Checked then
+      LCondicao:='and '
+    else
+      LCondicao:='Where ';
+    qrImpressao.SQL.Add(LCondicao+'entidade in(:CodigoEntidade)');
+    qrImpressao.ParamByName('CodigoEntidade').AsInteger := LEntidade;
+
+  end;
+  //ordenar
+  qrImpressao.SQL.Add('order by nome, '+LTipoRelatorio);
+  try
+    qrImpressao.Open;
+  Except
+    Raise Exception.Create('Erro ao executar o filtro');
   end;
 
 

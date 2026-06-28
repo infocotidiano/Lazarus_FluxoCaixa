@@ -1,25 +1,25 @@
 unit umovimento;
 {***************************************************************************}
-{                                                                           }
+
 {   Autor:        Daniel de Morais (InfoCotidiano)                          }
 {   Fontes:       Fluxo Caixa - https://github.com/infocotidiano/FluxoCaixa }
-{                                                                           }
+
 {   Informações:  Código Fonte da Playlist do YouTube sobre aprendizagem    }
 {                 de como criar um Fluxo de Caixa.                          }
-{                                                                           }
+
 {   Aviso Legal:  Este código é fornecido exclusivamente para fins de       }
 {                 estudo e aprendizagem. Não há qualquer garantia,          }
 {                 explícita ou implícita, de funcionamento, adequação       }
 {                 ou ausência de erros.                                     }
-{                                                                           }
+
 {                 O autor não se responsabiliza por danos diretos,          }
 {                 indiretos, incidentais ou consequenciais decorrentes      }
 {                 do uso deste código em ambientes de produção.             }
-{                                                                           }
+
 {                 Ao utilizar este código, você concorda que qualquer       }
 {                 modificação, adaptação ou uso será de sua inteira         }
 {                 responsabilidade.                                         }
-{                                                                           }
+
 {***************************************************************************}
 
 
@@ -216,7 +216,8 @@ begin
       'Saldo Anterior: R$ ' + FormatFloatBr(msk13x2, nSaldoAnterior.Value);
     frmrel_movimento.lSaldoAtual.Caption :=
       'Saldo Atual Período: R$ ' + FormatFloatBr(msk13x2, nSaldoPeriodo.Value);
-    frmrel_movimento.lPeriodo.Caption := 'Período de ' + dtINICIO.Text + ' até ' + dtFIM.Text;
+    frmrel_movimento.lPeriodo.Caption :=
+      'Período de ' + dtINICIO.Text + ' até ' + dtFIM.Text;
     frmrel_movimento.lCONTA.Caption := 'Conta: ' + edtCOD.Text + ' - ' + edtDESC.Text;
     frmrel_movimento.RLReport1.PreviewModal;
   finally
@@ -244,9 +245,7 @@ begin
   if key = VK_F4 then
   begin
     frmPesquisa := TfrmPesquisa.Create(
-      self, ['ID_CONTA', 'DESCRICAO', 'BANCO', 'CONTA'],
-      'CONTAS',
-      'ID_CONTA');
+      self, ['ID_CONTA', 'DESCRICAO', 'BANCO', 'CONTA'], 'CONTAS', 'ID_CONTA');
     try
       frmPesquisa.ShowModal;
       edtCOD.Text := frmPesquisa.edtResultado.Text;
@@ -304,8 +303,7 @@ begin
   // nSA (Saldo Anterior) vai receber o saldo anterior da função lancamento.saldoanterior
   oLancamento := Tlancamento.Create;
   try
-    nSA := oLancamento.SaldoAnterior(StrToIntDef(edtCOD.Text, 0),
-      dtINICIO.Date);
+    nSA := oLancamento.SaldoAnterior(StrToIntDef(edtCOD.Text, 0), dtINICIO.Date);
   finally
     FreeAndNil(oLancamento);
   end;
@@ -361,8 +359,8 @@ begin
     'from lancamentos l ' + 'join planos p on p.id_plano = l.plano, ' +
     '(select sum(valor*-1) Total ' + 'from lancamentos ' +
     'where valor < 0 and conta = :nCOD ' +
-    'and data_mvto between :dINICIO and :dFINAL) tmp ' +
-    'where p.tipo  = ' + QuotedStr('D') + ' and l.conta = :nCOD ' +
+    'and data_mvto between :dINICIO and :dFINAL) tmp ' + 'where p.tipo  = ' +
+    QuotedStr('D') + ' and l.conta = :nCOD ' +
     'and l.data_mvto between :dINICIO and :dFINAL ' + 'group by l.plano, p.descricao ' +
     'order by p.descricao';
 
@@ -404,10 +402,8 @@ begin
     nSaldoAnterior.Value := oLancamento.SaldoAnterior(StrToIntDef(edtCOD.Text, 0),
       dtINICIO.Date);
     nSaldoPeriodo.Value := oLancamento.SaldoAnterior(StrToIntDef(edtCOD.Text, 0),
-      dtINICIO.Date) +
-      oLancamento.SaldoPeriodo(StrToIntDef(edtCOD.Text, 0),
-      dtINICIO.Date,
-      dtFIM.Date);
+      dtINICIO.Date) + oLancamento.SaldoPeriodo(StrToIntDef(edtCOD.Text, 0),
+      dtINICIO.Date, dtFIM.Date);
     nSaldoFuturo.Value := oLancamento.SaldoFuturo(StrToIntDef(edtCOD.Text, 0),
       Date);
   finally
@@ -458,10 +454,8 @@ begin
     nSaldoAnterior.Value := oLancamento.SaldoAnterior(StrToIntDef(edtCOD.Text, 0),
       dtINICIO.Date);
     nSaldoPeriodo.Value := oLancamento.SaldoAnterior(StrToIntDef(edtCOD.Text, 0),
-      dtINICIO.Date) +
-      oLancamento.SaldoPeriodo(StrToIntDef(edtCOD.Text, 0),
-      dtINICIO.Date,
-      dtFIM.Date);
+      dtINICIO.Date) + oLancamento.SaldoPeriodo(StrToIntDef(edtCOD.Text, 0),
+      dtINICIO.Date, dtFIM.Date);
   finally
     FreeAndNil(oLancamento);
   end;

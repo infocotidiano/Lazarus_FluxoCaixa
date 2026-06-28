@@ -2,10 +2,10 @@ unit ucad_receber;
 {***************************************************************************}
 {   Autor:        Daniel de Morais (InfoCotidiano)                          }
 {   Fontes:       Fluxo Caixa - https://github.com/infocotidiano/FluxoCaixa }
-{                                                                           }
+
 {   Informações:  Código Fonte da Playlist do YouTube sobre aprendizagem    }
 {                 de como criar um Fluxo de Caixa.                          }
-{                                                                           }
+
 {   Aviso Legal:  Este código é fornecido exclusivamente para fins de       }
 {                 estudo e aprendizagem. Não há qualquer garantia,          }
 {                 explícita ou implícita, de funcionamento, adequação       }
@@ -14,7 +14,7 @@ unit ucad_receber;
 {                 O autor não se responsabiliza por danos diretos,          }
 {                 indiretos, incidentais ou consequenciais decorrentes      }
 {                 do uso deste código em ambientes de produção.             }
-{                                                                           }
+
 {                 Ao utilizar este código, você concorda que qualquer       }
 {                 modificação, adaptação ou uso será de sua inteira         }
 {                 responsabilidade.                                         }
@@ -160,11 +160,12 @@ var
 
 
 implementation
-  uses urel_contasareceber;
 
-{$R *.lfm}
+uses urel_contasareceber;
 
-{ Tfrmcad_receber }
+  {$R *.lfm}
+
+  { Tfrmcad_receber }
 
 procedure Tfrmcad_receber.btnPESQUISAClick(Sender: TObject);
 var
@@ -276,9 +277,10 @@ begin
   frm_RelContasARceber := Tfrm_RelContasARceber.Create(Self);
   try
     if rgTipo.ItemIndex = 1 then
-       frm_RelContasARceber.lbTitulo.Caption:='Relatório de Contas Recebidas';
+      frm_RelContasARceber.lbTitulo.Caption := 'Relatório de Contas Recebidas';
     if chkFiltrarPeriodo.Checked then
-    frm_RelContasARceber.lbPeriodo.Caption := 'Período de '+ DateToStr(dtInicial.Date)+' até '+DateToStr(dtFinal.Date);
+      frm_RelContasARceber.lbPeriodo.Caption :=
+        'Período de ' + DateToStr(dtInicial.Date) + ' até ' + DateToStr(dtFinal.Date);
     frm_RelContasARceber.RLReport1.PreviewModal;
   finally
     FreeAndNil(frm_RelContasARceber);
@@ -577,7 +579,7 @@ begin
     if dtInicial.Date > dtFinal.Date then
       raise Exception.Create('Erro Data Final menor que a Data Inicial ');
 
-    qrImpressao.sql.Add('where '+LTipoRelatorio+' between :dInicio and :dFim');
+    qrImpressao.sql.Add('where ' + LTipoRelatorio + ' between :dInicio and :dFim');
     qrImpressao.ParamByName('dInicio').AsDate := dtInicial.Date;
     qrImpressao.ParamByName('dFim').AsDate := dtFinal.Date;
   end;

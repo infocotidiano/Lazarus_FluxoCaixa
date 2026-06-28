@@ -13,8 +13,8 @@ inherited frmcad_receber: Tfrmcad_receber
   inherited PageControl1: TPageControl
     Height = 324
     Width = 608
-    ActivePage = tsRelatorio
-    TabIndex = 2
+    ActivePage = tsPESQUISA
+    TabIndex = 0
     inherited tsPESQUISA: TTabSheet
       ClientHeight = 296
       ClientWidth = 600

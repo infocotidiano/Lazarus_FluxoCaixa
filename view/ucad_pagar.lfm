@@ -14,8 +14,8 @@ inherited frmcad_pagar: Tfrmcad_pagar
   inherited PageControl1: TPageControl
     Height = 341
     Width = 605
-    ActivePage = tsRelatorio
-    TabIndex = 2
+    ActivePage = tsPESQUISA
+    TabIndex = 0
     inherited tsPESQUISA: TTabSheet
       ClientHeight = 313
       ClientWidth = 597
@@ -677,17 +677,6 @@ inherited frmcad_pagar: Tfrmcad_pagar
         ReadOnly = True
         TabOrder = 6
       end
-      object DBGrid2: TDBGrid
-        Left = 9
-        Height = 151
-        Top = 153
-        Width = 593
-        Color = clWindow
-        Columns = <>
-        DataSource = dsImpressao
-        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgAutoSizeColumns]
-        TabOrder = 7
-      end
     end
   end
   object qrPESQ: TZQuery[2]
@@ -936,7 +925,7 @@ inherited frmcad_pagar: Tfrmcad_pagar
   end
   object dsImpressao: TDataSource[6]
     DataSet = qrImpressao
-    Left = 344
-    Top = 296
+    Left = 320
+    Top = 248
   end
 end

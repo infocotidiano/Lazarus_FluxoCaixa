@@ -297,6 +297,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
+      <Unit>
+        <Filename Value="relatorios/urel_contasapagar.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frm_RelContasAPagar"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

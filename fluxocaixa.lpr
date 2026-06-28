@@ -15,7 +15,7 @@ uses
   ucad_conta, ucad_entidade, ucad_lcto, ucad_padrao, ucad_planoconta,
   uconfigurabanco, uEstatistica_Despesa, umovimento, upesquisa, upesquisa_lcto,
   uprincipal, urel_movimento, zcomponent, rxnew, pack_powerpdf, datetimectrls,
-  ucad_receber, ucad_pagar, urel_contasareceber;
+  ucad_receber, ucad_pagar, urel_contasareceber, urel_contasapagar;
 
 {$R *.res}
 

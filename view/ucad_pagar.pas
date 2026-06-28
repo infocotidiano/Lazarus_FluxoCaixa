@@ -49,7 +49,6 @@ type
     chkFiltrarPeriodo: TCheckBox;
     DatPAG: TDateTimePicker;
     DBGrid1: TDBGrid;
-    DBGrid2: TDBGrid;
     dsImpressao: TDataSource;
     dsPESQ: TDataSource;
     dtFinal: TRxDateEdit;
@@ -162,6 +161,7 @@ var
   frmcad_pagar: Tfrmcad_pagar;
 
 implementation
+ uses urel_contasapagar;
 
 {$R *.lfm}
 
@@ -310,6 +310,19 @@ end;
 procedure Tfrmcad_pagar.btn_imprimirClick(Sender: TObject);
 begin
   AplicarFiltro;
+  frm_RelContasAPagar := Tfrm_RelContasAPagar.Create(Self);
+  try
+    if rgTipo.ItemIndex = 1 then
+      frm_RelContasAPagar.rlTitulo.Caption := 'Relatório de Contas Pagas';
+    if chkFiltrarPeriodo.Checked then
+      frm_RelContasAPagar.rlPeriodo.Caption :=
+        'Período de ' + DateToStr(dtInicial.Date) + ' até ' + DateToStr(dtFinal.Date);
+    frm_RelContasAPagar.Relatorio.PreviewModal;
+  finally
+    FreeAndNil(frm_RelContasAPagar);
+  end;
+
+
 end;
 
 procedure Tfrmcad_pagar.DBGrid1DblClick(Sender: TObject);

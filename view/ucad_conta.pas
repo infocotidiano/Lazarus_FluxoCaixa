@@ -64,7 +64,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
-
+    procedure  PesquisarContas;
   public
 
   end;
@@ -74,6 +74,7 @@ var
   conta: Tconta;
 
 implementation
+ uses uquery_helper, uapp_validacoes;
 
 {$R *.lfm}
 
@@ -88,20 +89,15 @@ end;
 
 procedure Tfrmcad_conta.btnPESQUISAClick(Sender: TObject);
 begin
-  if qrPESQ.Active then qrPESQ.Close;
-  qrPESQ.SQL.Clear;
-  qrPESQ.sql.Add('select * from contas');
-  qrPESQ.sql.add('where descricao like :cPESQ');
-  qrPESQ.ParamByName('cPESQ').AsString := '%' + trim(edtPESQUISA.Text + '%');
   try
-    qrPESQ.Open;
-  except
+    PesquisarContas;
+
+    if qrPESQ.RecordCount <= 0 then
+      ShowMessage('Nenhum registro encontrado !');
+  Except
     on e: Exception do
-      ShowMessage('Erro ao realizar a pesquisa' + sLineBreak +
-        e.ClassName + sLineBreak + e.Message);
+       ShowMessage('e.Message');
   end;
-  if qrPESQ.RecordCount <= 0 then
-    ShowMessage('Nenhum registro encontrado !');
   cliqueBotao := cbNone;
 
 end;
@@ -126,14 +122,20 @@ end;
 
 procedure Tfrmcad_conta.btnALTERAClick(Sender: TObject);
 begin
-  if strtointdef(edtCODIGO.Text, 0) = 0 then
-  begin
-    ShowMessage('nenhum registro selecionado');
-    cliqueBotao := cbNone;
-    Abort;
+
+  try
+     TAppValidacoes.RegistroSelecionado(
+           TAppValidacoes.TextoParaInteiro(edtCODIGO.Text));
+
+     inherited;
+     edtDESCRICAO.SetFocus;
+  except
+    on e: Exception do
+       begin
+         cliqueBotao := cbNone;
+         ShowMessage(e.Message);
+       end;
   end;
-  inherited;
-  edtDESCRICAO.SetFocus;
 
 end;
 
@@ -181,6 +183,11 @@ begin
   inherited;
   if not qrPESQ.Active then
     qrPESQ.Open;
+end;
+
+procedure Tfrmcad_conta.PesquisarContas;
+begin
+  TQueryHelper.AbrirPesquisaLike(qrPESQ, 'contas', 'descricao', edtPESQUISA.Text);
 end;
 
 end.

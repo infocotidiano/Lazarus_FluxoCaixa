@@ -58,7 +58,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
-
+    procedure PesquisarContas;
   public
 
   end;
@@ -68,6 +68,8 @@ var
   oPlano: Tplano;
 
 implementation
+  uses uquery_helper, uapp_validacoes;
+
 
 {$R *.lfm}
 
@@ -84,6 +86,11 @@ begin
   if not qrPESQ.Active then
     qrPESQ.Open;
 
+end;
+
+procedure Tfrmcad_planoconta.PesquisarContas;
+begin
+  TQueryHelper.AbrirPesquisaLike(qrPESQ, 'planos', 'descricao', edtPESQUISA.Text);
 end;
 
 procedure Tfrmcad_planoconta.FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -106,13 +113,20 @@ end;
 
 procedure Tfrmcad_planoconta.btnALTERAClick(Sender: TObject);
 begin
-  if strtointdef(edtCODIGO.Text, 0) = 0 then
-  begin
-    ShowMessage('nenhum registro selecionado');
-    CliqueBotao := cbNone;
-    Abort;
+  try
+     TAppValidacoes.RegistroSelecionado(
+           TAppValidacoes.TextoParaInteiro(edtCODIGO.Text));
+
+     inherited;
+     edtDESCRICAO.SetFocus;
+  except
+    on e: Exception do
+       begin
+         cliqueBotao := cbNone;
+         ShowMessage(e.Message);
+       end;
   end;
-  inherited;
+
 end;
 
 procedure Tfrmcad_planoconta.btnAPAGAClick(Sender: TObject);
@@ -135,20 +149,16 @@ end;
 
 procedure Tfrmcad_planoconta.btnPESQUISAClick(Sender: TObject);
 begin
-  if qrPESQ.Active then qrPESQ.Close;
-  qrPESQ.SQL.Clear;
-  qrPESQ.sql.Add('select * from planos');
-  qrPESQ.sql.add('where descricao like :cPESQ');
-  qrPESQ.ParamByName('cPESQ').AsString := '%' + trim(edtPESQUISA.Text + '%');
   try
-    qrPESQ.Open;
-  except
+    PesquisarContas;
+
+    if qrPESQ.RecordCount <= 0 then
+      ShowMessage('Nenhum registro encontrado !');
+  Except
     on e: Exception do
-      ShowMessage('Erro ao realizar a pesquisa' + sLineBreak +
-        e.ClassName + sLineBreak + e.Message);
+       ShowMessage('e.Message');
   end;
-  if qrPESQ.RecordCount <= 0 then
-    ShowMessage('Nenhum registro encontrado !');
+
   cliqueBotao := cbNone;
 
 end;

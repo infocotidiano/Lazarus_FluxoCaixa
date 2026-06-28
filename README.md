@@ -10,7 +10,8 @@ Se esse conteúdo foi útil pra você, considere apoiar o canal 💛
 
 Isso ajuda a continuar produzindo mais conteúdos gratuitos e projetos como este.
 
-### ☕ Apoie com um PIX (qualquer valor é bem-vindo !)
+### 🎬 Mais de 80 vídeos gratuitos e subindo...
+Se esse material sobre fluxo de caixa foi útil  para você, que tal pagar um cafezinho em agradecimento? ☕
 <p align="center">
 <br>
   <img src="https://raw.githubusercontent.com/infocotidiano/infocotidiano/main/images/pixdane.jpeg" width="180"/>

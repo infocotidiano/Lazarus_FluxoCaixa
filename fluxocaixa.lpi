@@ -301,7 +301,16 @@
         <Filename Value="relatorios/urel_contasapagar.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frm_RelContasAPagar"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="classe/uapp_validacoes.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="classe/uquery_helper.pas"/>
+        <IsPartOfProject Value="True"/>
       </Unit>
     </Units>
   </ProjectOptions>

@@ -87,7 +87,7 @@ inherited frmcad_planoconta: Tfrmcad_planoconta
         Left = 32
         Height = 15
         Top = 128
-        Width = 24
+        Width = 23
         Caption = 'Tipo'
         ParentColor = False
       end
